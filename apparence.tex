@@ -1,0 +1,80 @@
+\tikzposterlatexaffectionproofoff %enlever phrase en bas à droite
+\usetheme{Simple} %différents thèmes tikzposter
+
+% ---- Couleurs
+\definecolor{mypink1}{rgb}{0.858, 0.188, 0.478}
+\definecolor{titlecolor}{RGB}{74, 114, 159}
+\definecolor{titledarkcolor}{RGB}{51,102,153}
+\definecolor{LightGrey}{RGB}{232, 232, 232}
+\definecolor{Grey}{RGB}{222, 223, 225}
+\definecolor{DarkerGrey}{RGB}{215,217,219}
+\definecolor{FontColor}{RGB}{20,20,20}
+\definecolor{Red}{RGB}{35, 135, 93}
+\definecolor{L-lig}{RGB}{25,124,192}
+\definecolor{point-lig}{named}{Red}
+\definecolor{G-lig}{RGB}{62,66,68}
+
+
+\definecolor{Orange}{RGB}{240,163,10}
+\definecolor{Gray}{RGB}{186,200,211}
+\definecolor{LightRed}{RGB}{214,98,93}
+\definecolor{LightBlue}{RGB}{160,200,217}
+\definecolor{LightGreen}{RGB}{130,161,119}
+\definecolor{Violet}{RGB}{190,144,252}
+% ----
+
+\colorlet{blocktitlefgcolor}{Red} %titre des blocks
+\colorlet{blocktitlebgcolor}{Grey} %couleur des lignes blocks
+%\colorlet{blockbodybgcolor}{mypink1}%????
+\colorlet{blockbodyfgcolor}{FontColor} %couleur du texte dans blocks
+\colorlet{innerblocktitlebgcolor}{Red}
+\colorlet{innerblocktitlebgcolor}{Red}
+\colorlet{innerblocktitlefgcolor}{white}
+\colorlet{notefrcolor}{Red!60} % ligne autour cadre notes
+\colorlet{notefgcolor}{white} % couleur police notes
+\colorlet{notebgcolor}{Red!60} % BG couleur des notes
+
+
+% ---- Titre
+\settitle{
+\begin{minipage}[b]{0.7\linewidth}
+\vspace{2cm}
+\hspace{15mm}\color{white}{\Huge\textsc{\textbf{\@title}} \par }\vspace*{1cm} \hspace{15mm}\color{white}{\LARGE\@author \par}\vspace*{1cm}
+\hspace{15mm}{\Large\@institute}\vspace{0.5cm}
+\end{minipage}%
+\hfill%
+\begin{minipage}[b]{0.3\linewidth}
+\hfill\includegraphics[scale=1.1]{images/Logos/uhh-color.eps}\hspace{15mm}\vspace{0.5cm}
+\end{minipage}
+}
+
+
+
+\definetitlestyle{sampletitle}{
+width=840mm, roundedcorners=0, linewidth=2pt, innersep=15pt,
+titletotopverticalspace=0mm, titletoblockverticalspace=-10mm
+}{\begin{scope}[line width=\titlelinewidth, rounded corners=\titleroundedcorners]\draw[fill=point-lig, color=point-lig]
+(\titleposleft,\titleposbottom) rectangle (\titleposright,\titlepostop);
+\end{scope}}
+
+\NewEnviron{posterbox}[1]
+{\block[titleleft,roundedcorners=16]{#1}{\raggedright\BODY}}
+
+\makeatletter
+\newcounter{tablecounter}
+\newenvironment{tikztable}[1][]{
+  \def \rememberparameter{#1}
+  \vspace{10pt}
+  \refstepcounter{tablecounter}
+  \begin{center}
+  }{
+    \ifx\rememberparameter\@empty
+    \else
+    \\[10pt]
+    {\small Table~\thetablecounter: \rememberparameter}
+    \fi
+  \end{center}
+}
+\makeatother
+
+\renewcommand{\arraystretch}{1.5}
